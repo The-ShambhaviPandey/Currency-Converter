@@ -1,5 +1,4 @@
-
-const BASE_URL = "https://api.frankfurter.app/latest?from=USD&to=INR";
+const BASE_URL = "https://api.frankfurter.app/latest";
 
 const dropdowns = document.querySelectorAll(".dropdown select");
 const btn = document.querySelector("form button");
@@ -44,19 +43,23 @@ const updateExchangeRate = async () => {
     amountInput.value = "1";
   }
 
-  const URL = `${BASE_URL}?base=${fromCurr.value}&symbols=${toCurr.value}`;
+  const URL = `${BASE_URL}?from=${fromCurr.value}&to=${toCurr.value}`;
 
   try {
     const response = await fetch(URL);
-    const data = await response.json();
 
-    // DEBUG: check API response
+    // Handle HTTP errors
+    if (!response.ok) {
+      throw new Error("API request failed");
+    }
+
+    const data = await response.json();
     console.log("API data:", data);
 
-    const rate = data.rates[toCurr.value];
+    const rate = data.rates?.[toCurr.value];
 
     if (!rate) {
-      msg.innerText = "Rate not available for selected currency.";
+      msg.innerText = "Exchange rate not available — API might be temporarily down.";
       return;
     }
 
@@ -64,13 +67,13 @@ const updateExchangeRate = async () => {
     msg.innerText = `${amtVal} ${fromCurr.value} = ${finalAmount} ${toCurr.value}`;
   } catch (err) {
     console.error(err);
-    msg.innerText = "Error fetching exchange rate.";
+    msg.innerText = "Unable to fetch data. The API might be unavailable at the moment.";
   }
 };
 
 // Button click
 btn.addEventListener("click", (evt) => {
-  evt.preventDefault(); // stop form from refreshing
+  evt.preventDefault();
   updateExchangeRate();
 });
 

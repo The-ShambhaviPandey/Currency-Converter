@@ -1,5 +1,7 @@
 # Currency Converter
 
+[Convert Your Money Now!](https://the-shambhavipandey.github.io/Currency-Converter/)
+
 A simple yet elegant **JavaScript-based Currency Converter** web app that lets users convert one currency into another using real-time exchange rates.
 
 ---
@@ -44,7 +46,7 @@ It dynamically updates the converted value based on user input and selected curr
 
 ## Demo
 
----
+## Check it out here: [Currency Converter on Github Pages](https://the-shambhavipandey.github.io/Currency-Converter/)
 
 ## License
 
