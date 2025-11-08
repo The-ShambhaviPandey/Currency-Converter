@@ -46,7 +46,7 @@ It dynamically updates the converted value based on user input and selected curr
 
 ## Demo
 
-## Check it out here: [Currency Converter on Github Pages](https://the-shambhavipandey.github.io/Currency-Converter/)
+Check it out here: [Currency Converter on Github Pages](https://the-shambhavipandey.github.io/Currency-Converter/)
 
 ## License
 
